@@ -1,0 +1,30 @@
+// Policy file for RMI Server
+// Cho phép tất cả các quyền cần thiết cho RMI
+
+grant {
+    // Cho phép tạo và sử dụng socket
+    permission java.net.SocketPermission "*:1024-65535", "connect,accept,listen";
+    permission java.net.SocketPermission "*:80", "connect";
+    permission java.net.SocketPermission "localhost:1099", "listen";
+    
+    // Cho phép đọc file
+    permission java.io.FilePermission "<<ALL FILES>>", "read";
+    
+    // Cho phép execute
+    permission java.io.FilePermission "<<ALL FILES>>", "execute";
+    
+    // Cho phép tạo class loader
+    permission java.lang.RuntimePermission "createClassLoader";
+    permission java.lang.RuntimePermission "setSecurityManager";
+    permission java.lang.RuntimePermission "accessClassInPackage.*";
+    permission java.lang.RuntimePermission "accessDeclaredMembers.*";
+    
+    // Cho phép reflection
+    permission java.lang.reflect.ReflectPermission "suppressAccessChecks";
+    
+    // Cho phép registry
+    permission java.rmi.RMISecurityPermission "getClassLoader";
+    permission java.rmi.RMISecurityPermission "connect";
+    permission java.rmi.RMISecurityPermission "accept";
+};
+
