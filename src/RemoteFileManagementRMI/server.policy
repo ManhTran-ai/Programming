@@ -1,0 +1,16 @@
+/*
+ * RMI Security Policy
+ * Cho phép server và client kết nối qua socket và truy cập file
+ */
+
+grant {
+    // Cho phép kết nối đến các cổng bất kỳ
+    permission java.net.SocketPermission "*:1024-65535", "connect,accept,listen";
+    
+    // Cho phép truy cập tất cả các file
+    permission java.io.FilePermission "<<ALL FILES>>", "read,write,delete,execute";
+    
+    // Cho phép runtime
+    permission java.lang.RuntimePermission "*";
+};
+
